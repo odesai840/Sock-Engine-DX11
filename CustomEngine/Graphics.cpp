@@ -115,6 +115,7 @@ void Graphics::ClearBuffer(float red, float green, float blue) noexcept
 {
 	const float color[] = { red,green,blue,1.0f };
 	pContext->ClearRenderTargetView(pTarget.Get(), color);
+	pContext->ClearDepthStencilView(pDSV.Get(), D3D11_CLEAR_DEPTH, 1.0f, 0u);
 }
 
 void Graphics::DrawTestTriangle(float angle, float x, float z)
@@ -286,9 +287,6 @@ void Graphics::DrawTestTriangle(float angle, float x, float z)
 
 	// bind vertex layout
 	pContext->IASetInputLayout(pInputLayout.Get());
-
-	// bind render target
-	pContext->OMSetRenderTargets(1u, pTarget.GetAddressOf(), nullptr);
 
 	// Set primitive topology to triangle list (groups of 3 vertices)
 	pContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
