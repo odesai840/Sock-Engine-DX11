@@ -4,6 +4,8 @@
 #include <vector>
 #include <string>
 #include <dxgidebug.h>
+#include "GraphicsThrowMacros.h"
+#include "WindowsThrowMacros.h"
 
 class DxgiInfoManager
 {

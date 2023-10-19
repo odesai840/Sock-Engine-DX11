@@ -1,6 +1,7 @@
 #include "Window.h"
 #include <sstream>
 #include "resource.h"
+#include "WindowsThrowMacros.h"
 
 // Window Class stuff
 Window::WindowClass Window::WindowClass::wndClass;
@@ -18,7 +19,7 @@ Window::WindowClass::WindowClass() noexcept
 	wc.hInstance = GetInstance();
 	wc.hIcon = static_cast<HICON>(LoadImage(
 		hInst, MAKEINTRESOURCE(IDI_ICON1),
-		IMAGE_ICON, 32, 32, 0
+		IMAGE_ICON, 256, 256, 0
 	));
 	wc.hCursor = nullptr;
 	wc.hbrBackground = nullptr;
@@ -26,7 +27,7 @@ Window::WindowClass::WindowClass() noexcept
 	wc.lpszClassName = GetName();
 	wc.hIconSm = static_cast<HICON>(LoadImage(
 		hInst, MAKEINTRESOURCE(IDI_ICON1),
-		IMAGE_ICON, 16, 16, 0
+		IMAGE_ICON, 32, 32, 0
 	));
 	RegisterClassEx(&wc);
 }
